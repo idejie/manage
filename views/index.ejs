@@ -1,0 +1,10 @@
+<%- include header %>
+<% electrics.forEach(function (post, index) { %>
+  <p><h2><a href="#"><%= post.area %></a></h2></p>
+  <p class="info">
+    作者：<a href="#"><%= electric.author %></a> | 
+    日期：<%= electric.time.minute %>
+  </p>
+  <p><%- electric.name %></p>
+<% }) %>
+<%- include footer %>
