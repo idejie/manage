@@ -2,27 +2,47 @@
 <html>
 <head>
 <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>物业管理系统</title>
-<link rel="stylesheet" href="/stylesheets/style.css">
+<!-- <link rel="stylesheet" href="/stylesheets/style.css"> -->
+<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">  
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="/stylesheets/old-ie.css">
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+        <link rel="stylesheet" href="/stylesheets/style.css">
+    <!--<![endif]-->
 </head>
 <body>
 
 <header>
 <h1><%= title %></h1>
 </header>
+<div id="layout" class="content pure-g">
+    <div id="nav" class="pure-u">
+        <!-- <a href="#" class="nav-menu-button">物业管理系统</a> -->
 
-<nav>
-	<span><a title="主页" href="/">主页</a></span>
-<% if(user) { %>
-	<span><a title="电费" href="/electric">电费</a></span>
-	<span><a title="水费" href="/water">水费</a></span>
-	<span><a title="物业费" href="/manage">物业费</a></span>
-	<span><a title="退出" href="/logout">退出</a></span>
-<% } else { %>
+        <div class="nav-inner">
+            <li class="pure-menu-heading" >欢迎使用<br /><br /><a title="主页"href="/">物业管理系统</li>
 
- 	<span><a title="登录" href="/login">登录</a></span>
-  	<span><a title="注册" href="/reg">注册</a></span>
-<% } %>
+            <div class="pure-menu">
+                <ul class="pure-menu-list">
+                    
+                    <% if(user) { %>
+
+                    <li class="pure-menu-item"><a title="电费"href="/electric" class="pure-menu-link"><span class="email-label-personal"></span>电费</a></li>
+                    <li class="pure-menu-item"><a title="水费"href="/water" class="pure-menu-link"><span class="email-label-work"></span>水费</a></li>
+                    <li class="pure-menu-item"><a href="/manage" class="pure-menu-link"><span class="email-label-travel"></span>物业费</a></li>
+               		<li class="primary-button pure-button" title="退出" href="/logout">退出</li>
+                    <% } else { %>
+                    	<br>
+                    	<span class="primary-button pure-button" title="退出" href="/login">登录</span>
+  						<span class="primary-button pure-button" title="退出" href="/reg">注册</span>
+					<% } %>
+                </ul>
+            </div>
+        </div>
+    </div>
 </nav>
 
 <article>

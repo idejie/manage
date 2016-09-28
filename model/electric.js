@@ -5,7 +5,7 @@ function Electric(author,area, unit,name,start,end,price ) {
   this.area = area;
   this.unit = unit;
   this.name = name;
-  this.start = start;
+this.start = start;
   this.end = end;
   this.price = price;
 }
@@ -37,6 +37,7 @@ Electric.prototype.save = function(callback) {
   //打开数据库
   mongodb.open(function (err, db) {
     if (err) {
+      console.log("hahahhaha");
       return callback(err);
     }
     //读取 electrics 集合

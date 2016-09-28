@@ -1,10 +1,25 @@
 <%- include header %>
-<% electrics.forEach(function (post, index) { %>
-  <p><h2><a href="#"><%= post.area %></a></h2></p>
-  <p class="info">
-    作者：<a href="#"><%= electric.author %></a> | 
-    日期：<%= electric.time.minute %>
-  </p>
-  <p><%- electric.name %></p>
+<div>
+<span>电费统计表</span>
+<table border="1">
+<tr>
+<th>单元</th><th>小区</th><th>业主</th><th>电表起始</th><th>电表终止码</th><th>电价</th><th>统计人</th><th>时间</th><th>操作</th>
+</tr>
+
+<% electrics.forEach(function (electrics, index) { %>
+	<tr>
+  	<td><%= electrics.area %></td>
+  	<td><%= electrics.unit%></td>
+  	<td><%- electrics.name %></td>
+  	<td><%= electrics.start %></td>
+  	<td><%= electrics.end %></td>
+  	<td><%= electrics.price %></td>
+    <td><a href="#"><%= electrics.author %></a></td>
+    <td><%= electrics.time.minute %></td>
+    <td></td>
+    </tr>
 <% }) %>
+
+</table>
+</div>
 <%- include footer %>

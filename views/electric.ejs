@@ -1,6 +1,6 @@
 <%- include header %>
-<form method="electric">
-  小区名<br />
+<form method="post" >
+  <scan>小区名</scan><br />
   <input type="text" name="area" /><br />
    单元名<br />
   <input type="text" name="unit" /><br />
@@ -12,6 +12,6 @@
   <input type="text" name="end" /><br />
   电费单价：<br />
   <input type="text" name="price" /><br />
-  <input type="submit" value="上报" />
+  <input  class="secondary-button pure-button" type="submit" value="上报" />
 </form>
 <%- include footer %>

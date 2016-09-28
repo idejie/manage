@@ -113,7 +113,18 @@ router.get('/logout',function(req,res,next){
 /* GET 电费记录 */
 router.get('/electric', checkLogin);
 router.get('/electric',function(req,res,next){
-  res.render('electric', {
+  Electric.get(null, function (err, electrics) {
+    if (err) {
+      electrics = [];
+    } 
+    res.render('index', {
+      title: '主页',
+      user: req.session.user,
+      electrics: electrics,
+      success: req.flash('success').toString(),
+      error: req.flash('error').toString()
+    });
+  });res.render('electric', {
       title: '电费记录',
       user: req.session.user,
       success: req.flash('success').toString(),
@@ -121,10 +132,16 @@ router.get('/electric',function(req,res,next){
     });
 });
 /*POST 电费记录 */
-router.post('/electric', checkLogin);
-router.post('/electric', function (req, res,next) {
+//router.post('/electric', checkLogin);
+router.post('/electric', checkLogin, function (req, res,next) {
+    console.log('*****');
+  console.log(electric);
+
   var currentUser = req.session.user,
       electric = new Electric(currentUser.name, req.body.area, req.body.unit,req.body.name,req.body.start,req.body.end,req.body.price);
+      
+  console.log('*****');
+  console.log(electric);
   electric.save(function (err) {
     if (err) {
       req.flash('error', err); 
@@ -157,6 +174,7 @@ function checkLogin(req, res, next) {
       req.flash('error', '未登录!'); 
       res.redirect('/login');
     }
+    console.log('checkLogin');
     next();
   }
 function checkNotLogin(req, res, next) {
